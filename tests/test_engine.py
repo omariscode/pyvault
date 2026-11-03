@@ -31,11 +31,17 @@ class TestVault:
 
         assert self.vault.get("2") == "Key not found"
 
-    def test_exists(self, key="1"):
+    def test_exists(self):
         self.vault.set("1", {"nome": "omar"})
 
         assert self.vault.exists("1") is True
         assert self.vault.exists("2") is False
+
+    def test_delete(self):
+        self.vault.set("1", {"nome": "omar"})
+
+        assert self.vault.delete("1") == "Key-Value deleted from storage"
+
 
     def test_clear(self):
         self.vault.set("1", {"nome": "omar"})
